@@ -1,0 +1,141 @@
+:root {
+  /* 테마 컬러 (사이버펑크) */
+  --bg-dark: #0D0D0D;
+  --bg-panel: #1A1A1A;
+  --neon-green: #00FF41;
+  --neon-red: #FF003C;
+  --cyber-blue: #0DE2EA;
+  
+  --font-main: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+  --font-mono: 'Fira Code', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: #FFFFFF;
+  font-family: var(--font-main);
+  line-height: 1.5;
+  overflow-x: hidden;
+  /* 모니터 송출을 위해 1920x1080 뷰를 기준으로 함 */
+  min-height: 100vh;
+}
+
+/* 터미널 감성 커서 */
+.blinking-cursor::after {
+  content: '█';
+  animation: blink 1s step-end infinite;
+  display: inline-block;
+  margin-left: 4px;
+  color: var(--neon-green);
+}
+
+/* 공통 모노스페이스 클래스 */
+.font-mono {
+  font-family: var(--font-mono);
+  letter-spacing: -0.5px;
+}
+
+/* UI Panel Base */
+.panel {
+  background-color: var(--bg-panel);
+  border: 1px solid #333;
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+/* Neon Glow Effect */
+.neon-text-green {
+  color: var(--neon-green);
+  text-shadow: 0 0 5px var(--neon-green), 0 0 10px var(--neon-green);
+}
+
+.neon-text-blue {
+  color: var(--cyber-blue);
+  text-shadow: 0 0 5px var(--cyber-blue), 0 0 10px var(--cyber-blue);
+}
+
+.neon-text-red {
+  color: var(--neon-red);
+  text-shadow: 0 0 5px var(--neon-red), 0 0 10px var(--neon-red);
+}
+
+.neon-border-green {
+  border: 1px solid var(--neon-green);
+  box-shadow: 0 0 5px var(--neon-green), inset 0 0 5px var(--neon-green);
+}
+
+.neon-border-blue {
+  border: 1px solid var(--cyber-blue);
+  box-shadow: 0 0 5px var(--cyber-blue), inset 0 0 5px var(--cyber-blue);
+}
+
+.neon-border-red {
+  border: 1px solid var(--neon-red);
+  box-shadow: 0 0 5px var(--neon-red), inset 0 0 5px var(--neon-red);
+}
+
+/* 애니메이션 */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 65, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(0, 255, 65, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 65, 0); }
+}
+
+.animate-pulse-green {
+  animation: pulse 2s infinite;
+}
+
+@keyframes ticker-scroll {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glitch {
+  0% { transform: translate(0) }
+  20% { transform: translate(-2px, 2px) }
+  40% { transform: translate(-2px, -2px) }
+  60% { transform: translate(2px, 2px) }
+  80% { transform: translate(2px, -2px) }
+  100% { transform: translate(0) }
+}
+
+.glitch-effect:hover {
+  animation: glitch 0.3s infinite;
+}
+
+/* 유틸리티 영역 (간단한 flex 등) */
+.flex { display: flex; }
+.flex-col { display: flex; flex-direction: column; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+.grid { display: grid; }
+.relative { position: relative; }
+.absolute { position: absolute; }
+.hidden { display: none; }
