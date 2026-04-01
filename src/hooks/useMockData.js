@@ -95,10 +95,38 @@ export function useMockData(intervalMs = 7000) {
     });
   }, []);
 
+  const updateTeamName = useCallback((id, newName) => {
+    setTeams(prevTeams => prevTeams.map(t => t.id === id ? { ...t, name: newName } : t));
+  }, []);
+
+  const updateTeamCount = useCallback((count) => {
+    setTeams(prevTeams => {
+      const currentCount = prevTeams.length;
+      if (count === currentCount) return prevTeams;
+      if (count < currentCount) return prevTeams.slice(0, count);
+      
+      const newTeams = [...prevTeams];
+      let maxId = currentCount > 0 ? Math.max(...prevTeams.map(t => t.id)) : 0;
+      for (let i = 0; i < count - currentCount; i++) {
+        maxId++;
+        newTeams.push({
+          id: maxId,
+          name: `New_Team_${maxId}`,
+          score: 0,
+          color: `#${Math.floor(Math.random()*16777215).toString(16).padStart(6, '0')}`,
+          history: [0]
+        });
+      }
+      return newTeams;
+    });
+  }, []);
+
   return {
     teams,
     problems,
     firstBlood,
-    submitFlag
+    submitFlag,
+    updateTeamName,
+    updateTeamCount
   };
 }

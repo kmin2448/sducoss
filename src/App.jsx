@@ -6,10 +6,11 @@ import Leaderboard from './components/Leaderboard';
 import ProblemGrid from './components/ProblemGrid';
 import ProblemModal from './components/ProblemModal';
 import FirstBloodPopup from './components/FirstBloodPopup';
+import AdminMenu from './components/AdminMenu';
 import { useMockData } from './hooks/useMockData';
 
 export default function App() {
-  const { teams, problems, firstBlood, submitFlag } = useMockData(7000); // 7초마다 데이터 업데이트
+  const { teams, problems, firstBlood, submitFlag, updateTeamName, updateTeamCount } = useMockData(7000); // 7초마다 데이터 업데이트
   const [selectedProblem, setSelectedProblem] = useState(null);
 
   return (
@@ -61,6 +62,9 @@ export default function App() {
 
       {/* First Blood 팝업 (조건부 렌더링) */}
       <FirstBloodPopup event={firstBlood} />
+
+      {/* 관리자 메뉴 */}
+      <AdminMenu teams={teams} updateTeamName={updateTeamName} updateTeamCount={updateTeamCount} />
 
     </div>
   );

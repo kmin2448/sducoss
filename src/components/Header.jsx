@@ -13,7 +13,7 @@ export default function Header() {
     <header className="flex justify-between items-center w-full" style={{ padding: '1rem 2rem', borderBottom: '1px solid #333', backgroundColor: 'var(--bg-panel)' }}>
       {/* 로고 / 타이틀 영역 */}
       <div className="flex items-center gap-4">
-        <h1 className="neon-text-green font-mono m-0" style={{ fontSize: '1.5rem', fontWeight: 700, margin: 0 }}>
+        <h1 className="neon-text-green font-mono m-0" style={{ fontSize: '2.8rem', fontWeight: 900, margin: 0, letterSpacing: '1px' }}>
           GAMJA_HACK<span className="blinking-cursor"></span>
         </h1>
         <div className="flex items-center gap-2" style={{ backgroundColor: 'rgba(0, 255, 65, 0.1)', padding: '4px 12px', borderRadius: '4px', border: '1px solid var(--neon-green)' }}>
